@@ -111,6 +111,17 @@ const properties = [
     bedrooms: 2,
     bathrooms: 1,
   },
+  {
+    adress: 'kent street, Manchester',
+    title: 'Big and Luxury',
+    img: 'assets/img/property/property-1.jpg',
+    area: 1500,
+    propertyStatus: 'For rent',
+    price: 2800,
+    type: 'residential',
+    bedrooms: 2,
+    bathrooms: 1,
+  },
 ]
 
 export default properties

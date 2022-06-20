@@ -14795,3 +14795,21 @@ body.off-canvas-sidebar-open {
     display: none;
   }
 }
+.error{
+  width:100%
+}
+.error > *{
+  width:100%
+
+}
+
+
+@media (min-width: 991px) {  
+  
+  .error{
+   text-align: center
+  }
+  .error > *{
+    width:40%;
+  }
+}

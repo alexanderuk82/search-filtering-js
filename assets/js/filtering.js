@@ -76,14 +76,12 @@ function storage(e) {
 
 
 
-  //Calling the filter submit button
+  //!Showing the Final result from filtering 
 
 function filter() {
 
   const finalResult =  properties.filter(areaProperties)  
-   propertyFiltered(finalResult)
-
-   
+   propertyFiltered(finalResult)   
 
 }
 
@@ -100,77 +98,92 @@ function areaProperties(prop) {
   }
 }
 
-// Function Property Filtered 
+
+
+//! Function Property Filtered the HTML results
 
 function propertyFiltered(final) {
- 
-  
+  mainTitle.textContent = 'The latest properties'
+  const errorFounding = document.querySelector('.error')
+  errorFounding.classList.add('hidden')
   clear()
-  mainSubtitle.textContent = `We have ${final.length} items available right now`
-  
-  final.forEach(function (prop) {
 
-    
-      
-      
-      const item =  document.createElement('div')
-      item.classList.add('col-lg-3', 'col-md-6', 'col-sm-12', 'wow', 'fadeInLeft',   'delay-04s')
-      const {adress, title, img, area, propertyStatus, price, type, bedrooms, bathrooms} = prop
+
   
-        item.innerHTML = `
+  if(final.length > 0){
+    mainSubtitle.textContent = `We have ${final.length} items available right now`
+    
+    final.forEach(function (prop) {  
         
-        <div class="property-box-8">
-        <div class="photo-thumbnail">
-          <div class="photo">
-            <img
-              src="${img}"
-              alt="property-box-8"
-              class="img-fluid"
-            />
-            <a href="#">
-              <span class="blog-one__plus"></span>
-            </a>
-          </div>
-          <div class="tag-for">${propertyStatus}</div>
-          <div class="price-ratings-box">
-            <p class="price">
-              £${price}
-            </p>
-            <div class="ratings">
-              <i class="fa fa-star"></i>
-              <i class="fa fa-star"></i>
-              <i class="fa fa-star"></i>
-              <i class="fa fa-star"></i>
-              <i class="fa fa-star-o"></i>
-            </div>
-          </div>
-        </div>
-        <div class="detail">
-          <div class="heading">
-            <h3>
-              <a href="properties-details.html">${title}</a>
-            </h3>
-            <div class="location">
+        
+        const item =  document.createElement('div')
+        item.classList.add('col-lg-3', 'col-md-6', 'col-sm-12', 'wow', 'fadeInLeft',   'delay-04s')
+        const {adress, title, img, area, propertyStatus, price, type, bedrooms, bathrooms} = prop
+    
+          item.innerHTML = `
+          
+          <div class="property-box-8">
+          <div class="photo-thumbnail">
+            <div class="photo">
+              <img
+                src="${img}"
+                alt="property-box-8"
+                class="img-fluid"
+              />
               <a href="#">
-                <i
-                  class="flaticon-facebook-placeholder-for-locate-places-on-maps"
-                ></i>
-                ${adress}
+                <span class="blog-one__plus"></span>
               </a>
             </div>
+            <div class="tag-for">${propertyStatus}</div>
+            <div class="price-ratings-box">
+              <p class="price">
+                £${price}
+              </p>
+              <div class="ratings">
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star-o"></i>
+              </div>
+            </div>
           </div>
-          <div class="properties-listing">
-            <span>${bedrooms} Beds</span>
-            <span>${bathrooms} Baths</span>
-            <span>${area} sqm</span>
+          <div class="detail">
+            <div class="heading">
+              <h3>
+                <a href="properties-details.html">${title}</a>
+              </h3>
+              <div class="location">
+                <a href="#">
+                  <i
+                    class="flaticon-facebook-placeholder-for-locate-places-on-maps"
+                  ></i>
+                  ${adress}
+                </a>
+              </div>
+            </div>
+            <div class="properties-listing">
+              <span>${bedrooms} Beds</span>
+              <span>${bathrooms} Baths</span>
+              <span>${area} sqm</span>
+            </div>
           </div>
         </div>
-      </div>
-        
-        `
+          
+          `
+    
+        result.appendChild(item)
+        }) 
+
+
+  }
   
-      result.appendChild(item)
-      }) 
+
+  else{
+    mainSubtitle.textContent = ` `
+
+    notFound()
+  }
 
 
 }
@@ -203,97 +216,118 @@ function maxprice() {
 }
 
 
-// Function to load all properties windows load
+//! Function to load all properties windows load
 
 function ourProperties() {
   
   clear()
-
+ 
 
   mainTitle.textContent = 'The latest properties'
   mainSubtitle.textContent = `We have ${properties.length} items available right now`
-
+  
   
   title.appendChild(mainTitle)
   title.appendChild(mainSubtitle)
-
+  
   
   properties.forEach(function (prop) {
     
     const item =  document.createElement('div')
     item.classList.add('col-lg-3', 'col-md-6', 'col-sm-12', 'wow', 'fadeInLeft',   'delay-04s')
     const {adress, title, img, area, propertyStatus, price, type, bedrooms, bathrooms} = prop
-
-      item.innerHTML = `
-      
-      <div class="property-box-8">
-      <div class="photo-thumbnail">
-        <div class="photo">
-          <img
+    
+    item.innerHTML = `
+    
+    <div class="property-box-8">
+    <div class="photo-thumbnail">
+    <div class="photo">
+    <img
             src="${img}"
             alt="property-box-8"
             class="img-fluid"
-          />
-          <a href="#">
+            />
+            <a href="#">
             <span class="blog-one__plus"></span>
-          </a>
-        </div>
-        <div class="tag-for">${propertyStatus}</div>
-        <div class="price-ratings-box">
-          <p class="price">
+            </a>
+            </div>
+            <div class="tag-for">${propertyStatus}</div>
+            <div class="price-ratings-box">
+            <p class="price">
             £${price}
-          </p>
-          <div class="ratings">
+            </p>
+            <div class="ratings">
             <i class="fa fa-star"></i>
             <i class="fa fa-star"></i>
             <i class="fa fa-star"></i>
             <i class="fa fa-star"></i>
             <i class="fa fa-star-o"></i>
-          </div>
-        </div>
-      </div>
-      <div class="detail">
-        <div class="heading">
-          <h3>
+            </div>
+            </div>
+            </div>
+            <div class="detail">
+            <div class="heading">
+            <h3>
             <a href="properties-details.html">${title}</a>
           </h3>
           <div class="location">
-            <a href="#">
-              <i
-                class="flaticon-facebook-placeholder-for-locate-places-on-maps"
-              ></i>
-              ${adress}
-            </a>
+          <a href="#">
+          <i
+          class="flaticon-facebook-placeholder-for-locate-places-on-maps"
+          ></i>
+          ${adress}
+          </a>
           </div>
-        </div>
-        <div class="properties-listing">
+          </div>
+          <div class="properties-listing">
           <span>${bedrooms} Beds</span>
           <span>${bathrooms} Baths</span>
           <span>${area} sqm</span>
-        </div>
-      </div>
-    </div>
+          </div>
+          </div>
+          </div>
+          
+          `
+          
+          result.appendChild(item)
+        })
+        
+      }
       
-      `
+      
+      function clear() {
+        
+        while (result.firstChild) {
+          
+          result.removeChild(result.firstChild)
+          
+        }
+      }
+      
+      
+      function clearBtn(){
+        
+        area.value = ''
+        propStatus.value = ""
+        minPrice.value = ""
+        type.value = ""
+        bedrooms.value= ""
+        bathrooms.value= ""
+        maxPrice.value = ""
+        
+        allResults()
+        window.location.reload()
+        
+      }
+      
+      
+      // !Function not Found itemsSplit
+      function notFound(){
+        
+        const errorFounding = document.querySelector('.error')
+        
+  errorFounding.classList.remove('hidden')
+  mainTitle.textContent = 'Oops We missed something!'
 
-    result.appendChild(item)
-    })
-  
-}
-
-
-function clear() {
-  
-  while (result.firstChild) {
-
-    result.removeChild(result.firstChild)
-
-  }
-}
-
-
-function clearBtn(){
-
-console.log('limpiando form')
-
+  mainSubtitle.textContent = `Try again with other options`
 }
