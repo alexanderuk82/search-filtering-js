@@ -1,6 +1,6 @@
 import properties from '../js/db.js'
 
-;('use strict')
+('use strict')
 
 const form = document.getElementById('form')
 const clearButton = document.getElementById('clearButton')
@@ -27,7 +27,7 @@ const animation = bodymovin.loadAnimation({
   renderer: 'svg',
   loop: true,
   autoplay: true,
-  path: 'https://assets10.lottiefiles.com/packages/lf20_tmsiddoc.json',
+  path: 'https://assets3.lottiefiles.com/packages/lf20_kw7o4s5y.json',
 })
 
 // !Storage all the input fileds value here
@@ -321,7 +321,7 @@ function clearBtn() {
   window.location.reload()
 }
 
-// !Function not Found itemsSplit
+// !Function not Found Lotties animation
 
 function notFound() {
   clear()
