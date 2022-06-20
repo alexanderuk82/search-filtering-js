@@ -19,7 +19,7 @@ const title = document.querySelector('.main-title')
 const mainTitle =  document.createElement('h1')
 const mainSubtitle= document.createElement('p')
 
-
+// !Defining lotties animation here!!!
 
 const wrapper = document.querySelector('.error')
 wrapper.classList.add('hidden')
@@ -31,6 +31,8 @@ const animation = bodymovin.loadAnimation({
   path: 'https://assets10.lottiefiles.com/packages/lf20_tmsiddoc.json',
 })
 
+
+// !Storage all the input fileds value here
 const filtered = {
 
   area: '',
