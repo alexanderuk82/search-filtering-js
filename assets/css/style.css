@@ -14807,9 +14807,8 @@ body.off-canvas-sidebar-open {
 @media (min-width: 991px) {  
   
   .error{
-   text-align: center
+  width:40%;
+   margin:1rem auto;
   }
-  .error > *{
-    width:40%;
-  }
+ 
 }

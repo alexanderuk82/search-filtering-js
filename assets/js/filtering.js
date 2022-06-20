@@ -19,6 +19,18 @@ const title = document.querySelector('.main-title')
 const mainTitle =  document.createElement('h1')
 const mainSubtitle= document.createElement('p')
 
+
+
+const wrapper = document.querySelector('.error')
+wrapper.classList.add('hidden')
+const animation = bodymovin.loadAnimation({
+  container: wrapper,
+  renderer: 'svg',
+  loop:true,
+  autoplay: true,
+  path: 'https://assets10.lottiefiles.com/packages/lf20_tmsiddoc.json',
+})
+
 const filtered = {
 
   area: '',
@@ -104,11 +116,10 @@ function areaProperties(prop) {
 
 function propertyFiltered(final) {
   mainTitle.textContent = 'The latest properties'
-  const errorFounding = document.querySelector('.error')
-  errorFounding.classList.add('hidden')
+
+  wrapper.classList.add('hidden')
+
   clear()
-
-
   
   if(final.length > 0){
     mainSubtitle.textContent = `We have ${final.length} items available right now`
@@ -181,7 +192,6 @@ function propertyFiltered(final) {
 
   else{
     mainSubtitle.textContent = ` `
-
     notFound()
   }
 
@@ -322,12 +332,14 @@ function ourProperties() {
       
       
       // !Function not Found itemsSplit
-      function notFound(){
-        
-        const errorFounding = document.querySelector('.error')
-        
-  errorFounding.classList.remove('hidden')
-  mainTitle.textContent = 'Oops We missed something!'
 
-  mainSubtitle.textContent = `Try again with other options`
+
+     function notFound(){
+        
+      clear()
+      wrapper.classList.remove('hidden')
+      animation.play()  
+      mainTitle.textContent = 'Oops We missed something!'
+
+      mainSubtitle.textContent = `Try again with other options`
 }
