@@ -989,6 +989,7 @@ input[type='checkbox']:checked + label:before {
   overflow: hidden;
   border-radius: 3px;
   cursor: pointer;
+  background: #ff3f75 !important;
 }
 
 .btn-4 i::before {
@@ -1000,11 +1001,13 @@ input[type='checkbox']:checked + label:before {
 
 .btn-4:hover {
   color: #fff;
+  color: #333 !important;
 }
 
 .btn-4:hover:after {
   transform: perspective(200px) scaleX(1.05) rotateX(0deg) translateZ(0);
   transition: transform 0.4s linear, transform 0.4s linear;
+  background: #f7a7bd !important;
 }
 
 .btn-4:after {
