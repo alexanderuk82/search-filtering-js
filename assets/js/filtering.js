@@ -243,7 +243,7 @@ function maxprice() {
     i = Math.floor(i / 2)
     option.value = i
     option.textContent = `£${i}`
-    maxPrice.appendChild(option)
+    maxPrice.appendChild(option)ddsd
   }
 }
 
@@ -253,7 +253,7 @@ function ourProperties() {
   clear()
 
   mainTitle.textContent = 'The latest properties'
-  mainSubtitle.textContent = `We have ${properties.length} items available right now`
+  mainSubtitle.textContent = `We hav ${properties.length} items available right now`
 
   title.appendChild(mainTitle)
   title.appendChild(mainSubtitle)
