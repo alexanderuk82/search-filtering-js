@@ -6,7 +6,7 @@ const form = document.getElementById('form')
 const clearButton = document.getElementById('clearButton')
 const area = document.getElementById('area')
 const propStatus = document.getElementById('propertyStatus')
-const minPrice = document.getElementById('minprice')
+const minPrice = document.getElementById('minPrice')
 const type = document.getElementById('category')
 const bedrooms = document.getElementById('bedrooms')
 const bathrooms = document.getElementById('bathrooms')
@@ -56,6 +56,7 @@ function allResults() {
   //!***************************************
   area.addEventListener('change', storage)
   propStatus.addEventListener('change', storage)
+  minPrice.addEventListener('change', storage)
 
   //!Click FORM BUTTON********************
   //!***************************************
@@ -76,6 +77,10 @@ function storage(e) {
       filtered.propertyStatus = e.target.value
       filter()
       break
+    case 'minPrice':
+      filtered.minPrice = parseInt(e.target.value)
+      filter()
+      break
 
     }
     console.log(filtered)
@@ -84,24 +89,27 @@ function storage(e) {
 //!Showing the Final result from filtering
 
 function filter() {
-  const finalResult = properties.filter(areaProperties).filter(statusProp)
+  const finalResult = properties.filter(areaProperties).filter(statusProp).filter(minPricePro)
   propertyFiltered(finalResult)
 }
 
 // !Function to validate area properties
 
 function areaProperties(prop) {
-  if (filtered.area) {
-    return prop.area === filtered.area
+
+  const{ area } = filtered
+  if (area) {
+    return prop.area === area
   } else {
-    return prop
+    return prop 
   }
 }
 // !Function to validate area properties
 
 function statusProp(prop) {
-  if (filtered.propertyStatus) {
-    return prop.propertyStatus === filtered.propertyStatus
+  const { propertyStatus } = filtered
+  if (propertyStatus) {
+    return prop.propertyStatus === propertyStatus
   } else {
     return prop
   }
