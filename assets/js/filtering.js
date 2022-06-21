@@ -1,6 +1,5 @@
 import properties from '../js/db.js'
-
-('use strict')
+;('use strict')
 
 const form = document.getElementById('form')
 const clearButton = document.getElementById('clearButton')
@@ -57,6 +56,10 @@ function allResults() {
   area.addEventListener('change', storage)
   propStatus.addEventListener('change', storage)
   minPrice.addEventListener('change', storage)
+  type.addEventListener('change', storage)
+  bedrooms.addEventListener('change', storage)
+  bathrooms.addEventListener('change', storage)
+  maxPrice.addEventListener('change', storage)
 
   //!Click FORM BUTTON********************
   //!***************************************
@@ -81,27 +84,48 @@ function storage(e) {
       filtered.minPrice = parseInt(e.target.value)
       filter()
       break
-
-    }
-    console.log(filtered)
+    case 'maxprice':
+      filtered.maxPrice = parseInt(e.target.value)
+      filter()
+      break
+    case 'category':
+      filtered.types = e.target.value
+      filter()
+      break
+    case 'bedrooms':
+      filtered.bedrooms = parseInt(e.target.value)
+      filter()
+      break
+    case 'bathrooms':
+      filtered.bathrooms = parseInt(e.target.value)
+      filter()
+      break
+  }
+  console.log(filtered)
 }
 
 //!Showing the Final result from filtering
 
 function filter() {
-  const finalResult = properties.filter(areaProperties).filter(statusProp).filter(minPricePro)
+  const finalResult = properties
+    .filter(areaProperties)
+    .filter(statusProp)
+    .filter(minPricePro)
+    .filter(categoryPro)
+    .filter(byBedroom)
+    .filter(byBathroom)
+    .filter(maxPricePro)
   propertyFiltered(finalResult)
 }
 
 // !Function to validate area properties
 
 function areaProperties(prop) {
-
-  const{ area } = filtered
+  const { area } = filtered
   if (area) {
     return prop.area === area
   } else {
-    return prop 
+    return prop
   }
 }
 // !Function to validate area status
@@ -120,6 +144,46 @@ function minPricePro(prop) {
   const { minPrice } = filtered
   if (minPrice) {
     return prop.price >= minPrice
+  } else {
+    return prop
+  }
+}
+// !Function to validate Category properties
+
+function categoryPro(prop) {
+  const { types } = filtered
+  if (types) {
+    return prop.type === types
+  } else {
+    return prop
+  }
+}
+// !Function to validate Bedrooms properties
+
+function byBedroom(prop) {
+  const { bedrooms } = filtered
+  if (bedrooms) {
+    return prop.bedrooms === bedrooms
+  } else {
+    return prop
+  }
+}
+// !Function to validate Bathrooms properties
+
+function byBathroom(prop) {
+  const { bathrooms } = filtered
+  if (bathrooms) {
+    return prop.bathrooms === bathrooms
+  } else {
+    return prop
+  }
+}
+// !Function to validate area Max price
+
+function maxPricePro(prop) {
+  const { maxPrice } = filtered
+  if (maxPrice) {
+    return prop.price <= maxPrice
   } else {
     return prop
   }
@@ -187,7 +251,7 @@ function propertyFiltered(final) {
                 <i class="fa fa-star"></i>
                 <i class="fa fa-star-o"></i>
               </div>
-            </div>
+            </div> 
           </div>
           <div class="detail">
             <div class="heading">
@@ -243,7 +307,7 @@ function maxprice() {
     i = Math.floor(i / 2)
     option.value = i
     option.textContent = `£${i}`
-    maxPrice.appendChild(option)ddsd
+    maxPrice.appendChild(option)
   }
 }
 
@@ -253,7 +317,7 @@ function ourProperties() {
   clear()
 
   mainTitle.textContent = 'The latest properties'
-  mainSubtitle.textContent = `We hav ${properties.length} items available right now`
+  mainSubtitle.textContent = `We have ${properties.length} items available right now`
 
   title.appendChild(mainTitle)
   title.appendChild(mainSubtitle)
@@ -362,6 +426,5 @@ function notFound() {
   wrapper.classList.remove('hidden')
   animation.play()
   mainTitle.textContent = 'Oops We could not find properties!'
-
   mainSubtitle.textContent = `Try again with other options`
 }
