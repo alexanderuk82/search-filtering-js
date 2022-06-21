@@ -1,4 +1,4 @@
-<h1>Landing page search properties</h1>
+<h1>Responsive Landing page search properties</h1>
 <h2>What does contains?</h2>
 
 <p>This is search filtering Properties for rent or buy, I am focusing in the Filtering section using a Fake DB and Valilla JS</p>
