@@ -89,7 +89,7 @@ function storage(e) {
 //!Showing the Final result from filtering
 
 function filter() {
-  const finalResult = properties.filter(areaProperties).filter(statusProp).filter(minPricePro)
+  const finalResult = properties.filter(areaProperties).filter(statusProp)
   propertyFiltered(finalResult)
 }
 
