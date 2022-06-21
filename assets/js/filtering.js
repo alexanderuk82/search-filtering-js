@@ -5,7 +5,7 @@ import properties from '../js/db.js'
 const form = document.getElementById('form')
 const clearButton = document.getElementById('clearButton')
 const area = document.getElementById('area')
-const propStatus = document.getElementById('property-status')
+const propStatus = document.getElementById('propertyStatus')
 const minPrice = document.getElementById('minprice')
 const type = document.getElementById('category')
 const bedrooms = document.getElementById('bedrooms')
@@ -55,6 +55,7 @@ function allResults() {
   //!Selected all the fields********************
   //!***************************************
   area.addEventListener('change', storage)
+  propStatus.addEventListener('change', storage)
 
   //!Click FORM BUTTON********************
   //!***************************************
@@ -68,7 +69,11 @@ function storage(e) {
   switch (e.target.id) {
     case 'area':
       filtered.area = parseInt(e.target.value)
+      filter()
+      break
 
+    case 'propertyStatus':
+      filtered.area = e.target.value
       filter()
       break
   }
@@ -77,7 +82,7 @@ function storage(e) {
 //!Showing the Final result from filtering
 
 function filter() {
-  const finalResult = properties.filter(areaProperties)
+  const finalResult = properties.filter(areaProperties).filter(statusProp)
   propertyFiltered(finalResult)
 }
 
@@ -87,7 +92,16 @@ function areaProperties(prop) {
   if (filtered.area) {
     return prop.area === filtered.area
   } else {
-    return ourProperties
+    return prop
+  }
+}
+// !Function to validate area properties
+
+function statusProp(prop) {
+  if (filtered.propertyStatus) {
+    return prop.propertyStatus === filtered.propertyStatus
+  } else {
+    return prop
   }
 }
 
