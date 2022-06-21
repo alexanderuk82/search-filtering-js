@@ -89,7 +89,7 @@ function storage(e) {
 //!Showing the Final result from filtering
 
 function filter() {
-  const finalResult = properties.filter(areaProperties).filter(statusProp)
+  const finalResult = properties.filter(areaProperties).filter(statusProp).filter(minPricePro)
   propertyFiltered(finalResult)
 }
 
@@ -104,12 +104,22 @@ function areaProperties(prop) {
     return prop 
   }
 }
-// !Function to validate area properties
+// !Function to validate area status
 
 function statusProp(prop) {
   const { propertyStatus } = filtered
   if (propertyStatus) {
     return prop.propertyStatus === propertyStatus
+  } else {
+    return prop
+  }
+}
+// !Function to validate area Min price
+
+function minPricePro(prop) {
+  const { minPrice } = filtered
+  if (minPrice) {
+    return prop.price >= minPrice
   } else {
     return prop
   }
