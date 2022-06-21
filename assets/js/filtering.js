@@ -73,10 +73,12 @@ function storage(e) {
       break
 
     case 'propertyStatus':
-      filtered.area = e.target.value
+      filtered.propertyStatus = e.target.value
       filter()
       break
-  }
+
+    }
+    console.log(filtered)
 }
 
 //!Showing the Final result from filtering
